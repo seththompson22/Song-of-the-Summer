@@ -5,7 +5,14 @@ export default function Home() {
     <>
       <h1 className={styles.title}>Dashboard Page</h1>
       <p>This page is for the leaderboard</p>
-      <div className={styles.leaderboard}>Leaderboard</div>
+      <div className={styles.leaderboard}>
+        <h3 className={styles.smalltitle}>Leaderboard</h3>
+        <div className={styles.list}>
+          <div className={styles.listitem}></div>
+          <div className={styles.listitem}></div>
+          <div className={styles.listitem}></div>
+        </div>
+      </div>
     </>
   );
 }
