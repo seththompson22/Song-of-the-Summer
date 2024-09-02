@@ -1,0 +1,11 @@
+import styles from "./page.module.css";
+
+export default function Home() {
+  return (
+    <>
+      <h1 className={styles.title}>Dashboard Page</h1>
+      <p>This page is for the leaderboard</p>
+      <div className={styles.leaderboard}>Leaderboard</div>
+    </>
+  );
+}

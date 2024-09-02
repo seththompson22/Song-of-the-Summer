@@ -3,3 +3,11 @@
   --black-color: #100c08; 
   --accent-color: #d9bb61;
 } 
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}

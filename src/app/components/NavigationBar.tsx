@@ -20,6 +20,11 @@ export function NavigationBar() {
               Home Page
             </a>
           </li>
+          <li className={styles.link}>
+            <a className={styles["icontext navitem"]} href="/dashboard">
+              Dashboard
+            </a>
+          </li>
         </div>
         {/* <div className={styles[`rightlinks ${showMenu ? "showmenu" : ""}`]}> */}
         <div className={styles["rightlinks showmenu"]}>
