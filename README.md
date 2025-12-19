@@ -1,36 +1,154 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎶 Song of the Summer
 
-## Getting Started
+Song of the Summer is a full-stack web application where users compete to gain the most points of listening to the aptly chosen **“Song of the Summer”** for a given season. The platform supports **season-based scoring**, **evolving rules**, and **historical accuracy**, ensuring past seasons remain correct even as new scoring logic is introduced.
 
-First, run the development server:
+This project is built as a **production-style system**, with a strong emphasis on backend correctness, clean architecture, and real-world engineering practices.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Features
+
+- User authentication and authorization
+- Season-based competitions
+- Configurable and evolving scoring rules
+- Historical season preservation
+- Leaderboards and rankings
+- Admin-controlled season and rule management
+- REST API with typed frontend consumption
+
+---
+
+## 🏗 Architecture
+
+### Overview
+
+This project has a React frontend and a C# backend.
+The backend handles scoring logic and data storage.
+The frontend displays results and lets users interact.
+Scoring rules are written in one place so they’re easy to change.
+
+Song of the Summer uses a **decoupled full-stack architecture** with a domain-centered backend. The system prioritizes maintainability, testability, and safe evolution of business rules over time.
+
+The application is split into:
+- A **React + TypeScript frontend**
+- An **ASP.NET Core Web API backend**
+
+---
+
+### System Flow
+
+```
+React (TypeScript)
+        ↓
+ASP.NET Core Web API
+        ↓
+Application Services
+        ↓
+Domain Logic (Scoring Rules)
+        ↓
+PostgreSQL
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Backend Design
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The backend follows a layered architecture:
 
-## Learn More
+- **API Layer** – Controllers, authentication, authorization  
+- **Application Layer** – Use-case orchestration and workflows  
+- **Domain Layer** – Core business logic and scoring rules  
+- **Infrastructure Layer** – Database access and external services  
 
-To learn more about Next.js, take a look at the following resources:
+All scoring and business rules live exclusively in the **Domain layer**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Key Design Decisions
 
-## Deploy on Vercel
+- Business logic is never implemented in the frontend
+- Scoring rules are isolated and unit-testable
+- Each season defines its own scoring strategy
+- Legacy seasons remain unchanged when rules evolve
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This ensures correctness and confidence as the system grows.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+
+## 🧰 Tech Stack
+
+### Frontend
+- React
+- TypeScript
+
+### Backend
+- C#
+- ASP.NET Core (.NET 8)
+- Entity Framework Core
+- ASP.NET Identity
+- JWT Authentication
+
+### Database
+- PostgreSQL
+
+### Infrastructure
+- Azure App Service (Backend)
+- Azure Static Web Apps or Vercel (Frontend)
+
+---
+
+## 🧪 Testing
+
+- **Domain tests** validate scoring rules and invariants
+- **Application tests** validate use cases
+- **API tests** validate integration and authentication
+- **Frontend tests** validate components and hooks
+
+Testing focuses on **business correctness**, not just coverage.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (18+)
+- .NET 8 SDK
+- PostgreSQL
+- Git
+
+---
+
+### Backend Setup
+
+```bash
+cd backend
+dotnet restore
+dotnet ef database update
+dotnet run
+```
+
+---
+
+### Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+## 📅 Project Status
+
+This project is actively under development. Features and scoring rules are implemented iteratively with a focus on correctness and maintainability.
+
+---
+
+## 🎯 Project Goals
+
+- Demonstrate real-world backend architecture
+- Model complex, evolving business rules
+- Maintain historical correctness
+- Build a resume-ready, production-style system
